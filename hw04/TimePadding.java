@@ -23,15 +23,40 @@ import java.util.Scanner;
             myScanner=new Scanner (System.in);
             
             //variables
-            double hoursMinutes=0;
-            int seconds=0;
-            
+            int finalSeconds=0;
+            int finalMinutes=0;
+            int finalHours=0;
+
+            //prompt user to enter the time in seconds
             System.out.print("Enter the time in seconds: ");
-            int nSeconds=myScanner.nextInt();
+            int initialSeconds=myScanner.nextInt();
             
             //convert time to conventional format (00:00:00)
-            hoursMinutes=nSeconds/60%60;
-            seconds=nSeconds%60;
+            finalSeconds=initialSeconds%60;
+            finalMinutes=initialSeconds/60%60;
+            finalHours=initialSeconds/3600;
+            
+            if (initialSeconds*10%10!=0)
+                {
+                System.out.println("You did not enter an int");
+                }
+            else if (initialSeconds<0||initialSeconds>86400)
+                {
+                System.out.println("Invalid input (must be an int greater then 0 and less then 86400");
+                }
+            else if (finalHours<10)
+                {
+                System.out.println("The time is "+finalHours+":0"+finalMinutes+":"+finalSeconds+".");
+                }
+            else if (finalMinutes<10)
+                {
+                System.out.println("The time is "+finalHours+":0"+finalMinutes+":"+finalSeconds+".");
+                }
+            else if (finalSeconds<10)
+                {
+                System.out.println("The time is "+finalHours+":"+finalMinutes+":0"+finalSeconds+".");
+                }
+            
             
             
             
