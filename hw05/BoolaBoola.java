@@ -11,98 +11,90 @@
 import java.util.Scanner;
     //establish a class
     public class BoolaBoola {
-        
         //main method required for every java program
         public static void main (String[] args) {
-    
-        //declare a scanner
-        Scanner myScanner;
-        myScanner=new Scanner (System.in);
-        
+
         //random variables
-        boolean randomBool1=0;
-        String randomOperator2=0;
-        boolean randomBool3=0;
-        String randomOperator4=0;
-        boolean randomBool5=0;
+        boolean random1;
+        String random2;
+        boolean random3;
+        String random4;
+        boolean random5;
         
         // answers
-        boolean 1stAnswer=0;
-        boolean 2ndAnswer=0;
+        boolean answer1;
+        boolean answer2;
         
-    
         //first random true/ false statement
-        if(Math.random() > 0.5)
-        {
-            randomBool1=true;
-        }
+        if (Math.random() > 0.5)    
+            {
+            random1=true;
+            }
         else
-        {
-            randomBool1=false;
-        }
-        
-        //1st boolean logical operator 
-        if(Math.random() > 0.5)
-        {
-            randomOperator2="&&";
-            1stAnswer=randomBool1&&randomBool3
-        }
-        else
-        {
-            randomOperator2="||";
-            1stAnswer=randomBool1||randomBool3;
-        }
-
+            {
+            random1=false;
+            }
         //second random true/false statement    
         if(Math.random() > 0.5)
-        {
-            randomBool3=true;
-        }
+            {
+            random3=true;
+            }
         else 
-        {
-            randomBool3=false;
-        }
-            
-        //2nd boolean logical opperator
-        if(Math.random()>0.5)
-        {
-            randomOperator4="&&";
-            2ndAnswer=1stAnswer&&randomBool5;
-        }
-        else 
-        {
-            randomOperator4="||";
-            2ndAnswer = 1stAnswer || randomBool5;
-        }     
-        
+            {
+            random3=false;
+            }
+        //1st boolean logical operator 
+        if (Math.random() > 0.5)
+            {
+            random2="&&";
+            answer1=random1&&random3;
+            }
+        else
+            {
+            random2="||";
+            answer1=random1||random3;
+            }
         //3rd random true/false statement 
         if(Math.random()>0.5)
-        {
-            randomBool5=true;
-        }
+            {
+            random5=true;
+            }
         else 
-        {
-            randomBool5=false;
-        }
-        
+            {
+            random5=false;
+            }
+        //2nd boolean logical opperator
+        if(Math.random()>0.5)
+            {
+            random4="&&";
+            answer2=answer1&&random5;
+            }
+        else 
+            {
+            random4="||";
+            answer2=answer1||random5;
+            }     
+
+        //import a scanner
+        Scanner myScanner=new Scanner(System.in);
         
         //print out the randomly genorated boolean expression
-        System.out.println("Does "+randomBool1+" "+randomOperator2+" "+randomBool3+" "+randomOperator4+" "+randomBool5+" have the value trie(t/T) or false(f/F)");
+        System.out.println("Does "+random1+" "+random2+" "+random3+" "+random4+" "+random5+" have the value true (t/T) or false (f/F)");
         //input must be a string
         String answer=myScanner.next();
         
         boolean userInput=false;
         
         //user answer should match the correct answer calculated by java
-        if((answer.equals("F"))||(answer.equals("f")))
+        if(answer.equals("F")||(answer.equals("f")))
             {
             userInput=false;
             }
-        else if((answer.equals("T"))||(answer.equals("t")))
+        else if(answer.equals("T")||(answer.equals("t")))
             {
             userInput=true;
             }
-        if(userInput==officialAnswer)
+        if(userInput=answer2)
             {
             System.out.print("Correct");
             }
