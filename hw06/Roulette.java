@@ -20,49 +20,71 @@ public class Roulette {
     //main method required for every java program
     public static void main (String[] args) {
     
-    //generates random number between 0 and 38 to simulate a game of roulette
-    int outcome = (int)(Math.random() * 39);
-    //generates random number to use as bet
-    int bet = (int)(Math.random() * 39);
+//declare all variables
+    //variable that represents the number of rounds of 100 spins each
+    int counter=0;
+    //represents the random number "guessed" by the player
+    int bet=0;
+    //represents the random number generated to simulate the outcom of spinning the roulette wheel
+    int outcome=0;
+    //represents the variable that will store the amount of rounds won
+    int amountWon=0;
+    //represents the variable that will count the amount of spins lost
+    int spinsLost=0;
+    //represents the variable that counts the profits of each round of 100 spins
+    int moneyMade=0;
+    //represents the variable that counts the number of times I made money
+    int numberTimesWon=0;
+    //this variable counts the dollars I made total
+    int totalMoneyMade=0;
     
-    //program will run 1000 times
-    int counter = 0;
-    while (counter < 1000)  {
-        //program will run 1000 times with each specific round running 100 times (100 spins) totaling in 100,000 attempts to collect data
-        int spin = 0;
-        while (spin < 100) {
-            while (bet == outcome) {
-                int answer = 0;
-                int successful = 0;
-                int win = 0;
-                answer == successful;
-                while (answer == successful) {
-                    answer == win;
-                }
-            while (bet != outcome) {
-                int unsuccessful = 0;
-                int loss = 0;
-                answer == unsuccessful;
-                while (answer == unsuccessful)  {
-                    answer == loss;
-                }
-                }
-
-                    
-                }
-                    
-            while (bet != outcome) {
-
+//program will run 1000 times
+//with each specific round running 100 times (100 spins) 
+//totaling in 100,000 attempts to collect data
+    while (counter<1000)  
+        {
+        bet=(int)(1+Math.random() * 39);    
+        //makes sure that each of the 1000 rounds contains 100 spins
+        for (int spin=0; spin<100; spin++) 
+            {
+            outcome = (int)(1+Math.random() * 39);
+            //if the the number I bet on is the same as what was randomly generated
+            //in place of the roulette spinner, then I win that round
+            if (bet==outcome) 
+                {
+                amountWon++; //if numbers are the same then this adds +1 to the amount of rounds won
+            }
         }
-        spin++;
-    }
-    counter++;
-    }
     
+        moneyMade=(amountWon*36)- 100; //this calculates the amount of money I make 
+        //by multiplying the amount won per round times the amount of times I won
+        
+        counter++;
+        totalMoneyMade+=moneyMade;
+        amountWon=0;
+        
+        if(moneyMade>0) {        //if I win a round and make money then this will add +1 to 
+            numberTimesWon++;    //the total count of the amount of times I won
+            }
+        else if(moneyMade<108) {  //if I make less then 108$ that means I lost more then 3 spins
+            spinsLost++;          //in a round of 100 which means I lost money
+            }
+        }
 
-//    System.out.println("The total number of times you lost everything= "+totalLost+" ");
-//    System.out.println("The total number of winnings of all the simulations added together= "+totalWinnings+" ");
-//    System.out.println("The amount of times you walked away with money after 1 round of 100 spins: "+moneyWon+" ");
+//now this will print out the results of all the data gained from the 100,000 attempts
+    //how many times did I lost everything?
+    System.out.println("The total number of times you lost everything is: "+spinsLost+" times");
+    
+    if(totalMoneyMade>=0) {
+        //total amount of money made
+        System.out.println("The total amount of winnings from all of the simulations I won added together is $"+totalMoneyMade+" ");
+        }
+    else if(totalMoneyMade<0) {
+        //total amount of money lost
+        System.out.println("For all 100,000 spins my total losses were $"+(-1*totalMoneyMade)+" ");
+        }
+    //amount of times I walked away with a profit    
+    System.out.println("The amount of times I walked away with a profit after 100,000 spins: "+numberTimesWon+" ");
         
         }//end of main method
     }//end of class
